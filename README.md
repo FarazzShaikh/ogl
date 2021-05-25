@@ -27,7 +27,7 @@
 
 [See the Examples!](https://oframe.github.io/ogl/examples)
 
-OGL is a small, effective WebGL library aimed at developers who like minimal layers of abstraction, and are comfortable creating their own shaders.
+OGL is a small, effective WebGL library aimed at developers who like minimal layers of abstraction, and are interested in creating their own shaders.
 
 Written in es6 modules with zero dependencies, the API shares many similarities with ThreeJS, however it is tightly coupled with WebGL and comes with much fewer features.
 
@@ -37,12 +37,18 @@ Keeping the level of abstraction low helps to make the library easier to underst
 
 ## Install
 
-[Download](https://github.com/oframe/ogl/archive/master.zip) and [load directly in the browser](https://developers.google.com/web/fundamentals/primers/modules) using es6 modules - **no dev-stack required**.
+[Download](https://github.com/oframe/ogl/archive/master.zip) 
 
 **or**
 
 ```
 npm i ogl
+```
+
+**or**
+
+```
+yarn add ogl
 ```
 
 ## Examples
@@ -59,8 +65,8 @@ Component | Size (minzipped)
 ------------ | -------------:
 Core | 8kb
 Math | 6kb
-Extras | 10kb
-Total | 24kb
+Extras | 15kb
+Total | 29kb
 
 With tree-shaking applied in a build step, one can expect the final size to be much lighter than the values above.
 
@@ -72,19 +78,17 @@ If installed amongst your project files, importing can be done from one single e
 import { ... } from './path/to/src/index.mjs';
 ```
 
-Else if using a bundler with node modules, then import directly from the installed node module.
+Else if using a bundler or import maps with node modules, then import directly from the installed node module.
 ```js
 import { ... } from 'ogl';
 ```
-By default, the ES source modules are loaded (`src/index.mjs`). If your bundler doesn't support ES modules (eg Browserify, Vue SSR), the simplest solution is to just target the UMD bundle instead. 
-```js
-import { ... } from 'ogl/dist/ogl.umd.js';
-```
+By default, the ES source modules are loaded (`src/index.mjs`).
 
-As another alternative, you could load from a CDN, using either the jsdelivr or unpkg services.
+As another alternative, you could load from a CDN, using either the jsdelivr, unpkg or skypack services.
 ```js
-import {...} from 'https://cdn.jsdelivr.net/npm/ogl';
-import {...} from 'https://unpkg.com/ogl';
+import { ... } from 'https://cdn.jsdelivr.net/npm/ogl';
+import { ... } from 'https://unpkg.com/ogl';
+import { ... } from 'https://cdn.skypack.dev/ogl';
 ```
 If you take this route, I would highly recommend defining a specific version (append `@x.x.x`) to avoid code breaking, rather than fetching the latest version, as per the above links.
 
@@ -215,7 +219,7 @@ import {Renderer, Geometry, Program, Mesh} from 'ogl';
 
 In an attempt to keep things light and modular, the library is split up into three components: **Math**, **Core**, and **Extras**.
 
-The **Math** component is an extension of [gl-matrix](http://glmatrix.net/), providing instancable classes that extend Array for each of the module types. 7kb when gzipped, it has no dependencies and can be used separately.
+The **Math** component is an extension of [gl-matrix](http://glmatrix.net/), providing instancable classes that extend Array for each of the module types. 8kb when gzipped, it has no dependencies and can be used separately.
 
 The **Core** is made up of the following:
  - Geometry.js
@@ -227,27 +231,58 @@ The **Core** is made up of the following:
  - Texture.js
  - RenderTarget.js
 
-Any additional layers of abstraction will be included as **Extras**, and not part of the core as to reduce bloat.
+Any additional layers of abstraction will be included as **Extras**, and not part of the core as to reduce bloat. These provide a wide breadth of functionality, ranging from simple to fairly advanced.
 
 Below is an **Extras** wish-list, and is still a work-in-progress as examples are developed.
- - [x] Plane.js
- - [x] Box.js
- - [x] Sphere.js
- - [x] Cylinder.js
- - [x] Triangle.js
- - [x] Orbit.js
- - [x] Raycast.js
- - [ ] Curve.js
- - [x] Post.js
- - [x] Skin.js
  - [x] Animation.js
- - [x] Text.js
- - [x] NormalProgram.js
+ - [x] Box.js
+ - [x] Curve.js
+ - [x] Cylinder.js
  - [x] Flowmap.js
+ - [x] GLTFLoader.js
+ - [x] GLTFAnimation.js
+ - [x] GLTFSkin.js
  - [x] GPGPU.js
- - [x] Polyline.js
- - [x] Shadow.js
  - [x] KTXTexture.js
+ - [x] NormalProgram.js
+ - [x] Orbit.js
+ - [x] Plane.js
+ - [x] Polyline.js
+ - [x] Post.js
+ - [x] Raycast.js
+ - [x] Shadow.js
+ - [x] Skin.js
+ - [x] Sphere.js
+ - [x] Text.js
  - [x] TextureLoader.js
- - [ ] GLTFLoader.js
+ - [x] Torus.js
+ - [x] Triangle.js
  - [ ] OBJLoader.js
+
+
+## Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org>
